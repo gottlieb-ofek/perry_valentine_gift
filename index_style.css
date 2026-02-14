@@ -3,7 +3,7 @@ body {
   margin: 0;
   height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #f4e1c1; /* sand color */
+  background-color: #fff4e1; /* sand color */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@ h1 {
   transform: scale(1.1);
 }
 
-/* Falling hearts container */
+/* Hearts container */
 #hearts {
   position: fixed;
   top: 0;
@@ -52,23 +52,28 @@ h1 {
   z-index: 1;
 }
 
-/* Heart style & animation */
+/* Falling heart using your image */
 .falling-heart {
   position: absolute;
-  color: #d0006f;
-  font-size: 16px;
+  width: 35px;           /* base width */
+  height: auto;          /* preserve aspect ratio */
+  background-image: url('perfect_heart.png');
+  background-size: contain; /* scale image inside box */
+  background-repeat: no-repeat;
   animation-name: fall;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
 
+
+/* Falling animation */
 @keyframes fall {
   0% {
-    transform: translateY(-50px) rotate(0deg);
+    transform: translateY(-50px);
     opacity: 1;
   }
   100% {
-    transform: translateY(100vh) rotate(360deg);
+    transform: translateY(100vh);
     opacity: 0;
   }
 }

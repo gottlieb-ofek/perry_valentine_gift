@@ -16,12 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     countEl.textContent = count;
   });
 
-  // Reset beers
+  // Reset beers (mobile-friendly, no confirm)
   resetBtn.addEventListener("click", () => {
-    if (confirm("Reset beer count? 🍺")) {
-      localStorage.setItem(KEY, 0);
-      // Go back to main Valentine page
-      window.location.href = "index.html";
-    }
+    localStorage.setItem(KEY, 0);
+    countEl.textContent = 0;   // update display immediately
+    window.location.href = "index.html"; // go back to landing
   });
 });
