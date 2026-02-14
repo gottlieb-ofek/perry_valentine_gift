@@ -8,14 +8,49 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>PERRYYYYYYYYYYY</h1>
+ <div class="container">
 
-    <div id="beerCount">0</div>
+  <div class="tracker-row">
 
-    <button id="addBtn">+1 Beer</button>
-    <button id="resetBtn">Reset</button>
+    <!-- Perry column -->
+<div class="mug-column">
+  <button id="addBtnPerry">+🍺</button>
+  <div class="beer-mug">
+    <div class="beer-fill" id="progressFillPerry"></div>
+    <div class="beer-count-inside" id="beerCountPerry">0</div> <!-- inside mug -->
+    <div class="beer-foam"></div>
   </div>
+  <div class="mug-label">Perry</div>
+  <button id="subBtnPerry">-🍺</button>
+</div>
+
+<!-- Total column (center) -->
+<div class="mug-column">
+  <div class="total-mug">
+    <div class="beer-fill" id="progressFillTotal"></div>
+    <div class="beer-count-inside" id="beerCountTotal">0</div>
+  </div>
+  <div class="mug-label">Total</div>
+</div>
+
+
+<!-- Geva column -->
+<div class="mug-column">
+  <button id="addBtnGeva">+🍺</button>
+  <div class="beer-mug">
+    <div class="beer-fill" id="progressFillGeva"></div>
+    <div class="beer-count-inside" id="beerCountGeva">0</div>
+    <div class="beer-foam"></div>
+  </div>
+  <div class="mug-label">Geva</div>
+  <button id="subBtnGeva">-🍺</button>
+</div>
+
+
+  </div>
+
+</div>
+
 
   <script src="script.js" defer></script>
 </body>
