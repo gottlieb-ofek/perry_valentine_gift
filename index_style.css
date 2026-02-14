@@ -1,0 +1,74 @@
+/* Body and container */
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4e1c1; /* sand color */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  z-index: 2; /* make sure it's above the hearts */
+  position: relative;
+}
+
+/* Heading */
+h1 {
+  color: #d0006f; /* magenta */
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+/* Regular button */
+#valentineBtn {
+  background-color: #d0006f;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#valentineBtn:hover {
+  background-color: #ff1f8d;
+  transform: scale(1.1);
+}
+
+/* Falling hearts container */
+#hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Heart style & animation */
+.falling-heart {
+  position: absolute;
+  color: #d0006f;
+  font-size: 16px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
