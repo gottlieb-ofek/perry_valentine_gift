@@ -214,7 +214,7 @@ button {
 
 #totalImage {
   display: none;
-  width: 180px;
+  width: 90px;
   margin: 2px auto 0 auto;   /* closer to the mug */
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
