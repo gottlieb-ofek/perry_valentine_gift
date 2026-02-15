@@ -1,73 +1,78 @@
-const KEY_PERRY = "beerCountPerry";
-const KEY_GEVA = "beerCountGeva";
-const MAX_BEERS = 10;
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== Perry =====
+  let countPerry = Number(localStorage.getItem("beerCountPerry")) || 0;
+  let countGeva = Number(localStorage.getItem("beerCountGeva")) || 0;
+
   const countElPerry = document.getElementById("beerCountPerry");
-  const addBtnPerry = document.getElementById("addBtnPerry");
-  const subBtnPerry = document.getElementById("subBtnPerry");
-  let countPerry = Number(localStorage.getItem(KEY_PERRY)) || 0;
-
-  // ===== Geva =====
   const countElGeva = document.getElementById("beerCountGeva");
-  const addBtnGeva = document.getElementById("addBtnGeva");
-  const subBtnGeva = document.getElementById("subBtnGeva"); // fixed variable name
-  let countGeva = Number(localStorage.getItem(KEY_GEVA)) || 0;
-
-  // ===== Total =====
-  const progressTotal = document.getElementById("progressFillTotal");
   const countElTotal = document.getElementById("beerCountTotal");
 
-  // Initial render
-  countElPerry.textContent = countPerry;
-  countElGeva.textContent = countGeva;
-  countElTotal.textContent = countPerry + countGeva;
-  updateProgress();
+  const progressPerry = document.getElementById("progressFillPerry");
+  const progressGeva = document.getElementById("progressFillGeva");
+  const progressTotal = document.getElementById("progressFillTotal");
 
-  // ----- Perry buttons -----
-  addBtnPerry.addEventListener("click", () => {
-    if (countPerry < MAX_BEERS) countPerry++;
-    localStorage.setItem(KEY_PERRY, countPerry);
-    countElPerry.textContent = countPerry;
-    updateProgress();
+  // Popups
+  const popupAddPerry = document.getElementById("popupAddPerry");
+  const popupSubPerry = document.getElementById("popupSubPerry");
+  const popupAddGeva = document.getElementById("popupAddGeva");
+  const popupSubGeva = document.getElementById("popupSubGeva");
+
+  // Show popup on plus/minus click
+  document.getElementById("addBtnPerry").addEventListener("click", () => popupAddPerry.style.display = "block");
+  document.getElementById("subBtnPerry").addEventListener("click", () => popupSubPerry.style.display = "block");
+  document.getElementById("addBtnGeva").addEventListener("click", () => popupAddGeva.style.display = "block");
+  document.getElementById("subBtnGeva").addEventListener("click", () => popupSubGeva.style.display = "block");
+
+  // Hide popup if click outside
+  document.addEventListener("click", e => {
+    if (!e.target.classList.contains("add-btn") && !e.target.classList.contains("sub-btn") && !e.target.closest(".popup-menu")) {
+      popupAddPerry.style.display = "none";
+      popupSubPerry.style.display = "none";
+      popupAddGeva.style.display = "none";
+      popupSubGeva.style.display = "none";
+    }
   });
 
-  subBtnPerry.addEventListener("click", () => {
-    if (countPerry > 0) countPerry--; // prevent negative
-    localStorage.setItem(KEY_PERRY, countPerry);
-    countElPerry.textContent = countPerry;
+  // Function to change value
+  function changeValue(side, value, add = true) {
+    if (side === "Perry") {
+      countPerry = add 
+        ? Math.min(countPerry + value, 25) 
+        : Math.max(countPerry - value, 0);
+      localStorage.setItem("beerCountPerry", countPerry);
+    } else if (side === "Geva") {
+      countGeva = add
+        ? Math.min(countGeva + value, 25)
+        : Math.max(countGeva - value, 0);
+      localStorage.setItem("beerCountGeva", countGeva);
+    }
     updateProgress();
-  });
-
-  // ----- Geva buttons -----
-  addBtnGeva.addEventListener("click", () => {
-    if (countGeva < MAX_BEERS) countGeva++;
-    localStorage.setItem(KEY_GEVA, countGeva);
-    countElGeva.textContent = countGeva;
-    updateProgress();
-  });
-
-  subBtnGeva.addEventListener("click", () => {
-    if (countGeva > 0) countGeva--; // prevent negative
-    localStorage.setItem(KEY_GEVA, countGeva);
-    countElGeva.textContent = countGeva;
-    updateProgress();
-  });
-
-  // ----- Update all progress bars -----
-  function updateProgress() {
-    const percentPerry = Math.min((countPerry / MAX_BEERS) * 100, 100);
-    const percentGeva = Math.min((countGeva / MAX_BEERS) * 100, 100);
-    const percentTotal = Math.min(((countPerry + countGeva) / (MAX_BEERS*2)) * 100, 100);
-
-    document.getElementById("progressFillPerry").style.height = percentPerry + "%";
-    document.getElementById("progressFillGeva").style.height = percentGeva + "%";
-    progressTotal.style.height = percentTotal + "%";
-
-    // update total count text
-    countElTotal.textContent = countPerry + countGeva;
   }
 
+  // Add event listeners for popup options
+  popupAddPerry.querySelectorAll(".option").forEach(opt => {
+    opt.addEventListener("click", () => { changeValue("Perry", Number(opt.dataset.value), true); popupAddPerry.style.display = "none"; });
+  });
+  popupSubPerry.querySelectorAll(".option").forEach(opt => {
+    opt.addEventListener("click", () => { changeValue("Perry", Number(opt.dataset.value), false); popupSubPerry.style.display = "none"; });
+  });
+  popupAddGeva.querySelectorAll(".option").forEach(opt => {
+    opt.addEventListener("click", () => { changeValue("Geva", Number(opt.dataset.value), true); popupAddGeva.style.display = "none"; });
+  });
+  popupSubGeva.querySelectorAll(".option").forEach(opt => {
+    opt.addEventListener("click", () => { changeValue("Geva", Number(opt.dataset.value), false); popupSubGeva.style.display = "none"; });
+  });
+
+  // Update bars
+  function updateProgress() {
+    progressPerry.style.height = (countPerry / 25 * 100) + "%";
+    progressGeva.style.height = (countGeva / 25 * 100) + "%";
+    progressTotal.style.height = ((countPerry + countGeva) / 50 * 100) + "%";
+
+    countElPerry.textContent = countPerry.toFixed(1) + " L";
+    countElGeva.textContent = countGeva.toFixed(1) + " L";
+    countElTotal.textContent = (countPerry + countGeva).toFixed(1) + " L";
+  }
+
+  updateProgress();
 });

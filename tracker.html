@@ -12,17 +12,37 @@
 
   <div class="tracker-row">
 
-    <!-- Perry column -->
+  <!-- Perry column -->
+<!-- Perry column -->
 <div class="mug-column">
-  <button id="addBtnPerry">+🍺</button>
+  <div class="btn-container">
+    <button class="add-btn" id="addBtnPerry">+🍺</button>
+    <div class="popup-menu" id="popupAddPerry">
+      <div class="option" data-value="0.3">300 ml 🍻</div>
+      <div class="option" data-value="0.5">500 ml 🍻</div>
+      <div class="option" data-value="1">1 L 🍻</div>
+    </div>
+  </div>
+
+
+
   <div class="beer-mug">
     <div class="beer-fill" id="progressFillPerry"></div>
-    <div class="beer-count-inside" id="beerCountPerry">0</div> <!-- inside mug -->
+    <div class="beer-count-inside" id="beerCountPerry">0 L</div>
     <div class="beer-foam"></div>
   </div>
   <div class="mug-label">Perry</div>
-  <button id="subBtnPerry">-🍺</button>
+
+    <div class="btn-container">
+    <button class="sub-btn" id="subBtnPerry">-🍺</button>
+    <div class="popup-menu" id="popupSubPerry">
+      <div class="option" data-value="0.3">300 ml 🍻</div>
+      <div class="option" data-value="0.5">500 ml 🍻</div>
+      <div class="option" data-value="1">1 L 🍻</div>
+    </div>
+  </div>
 </div>
+
 
 <!-- Total column (center) -->
 <div class="mug-column">
@@ -30,20 +50,36 @@
     <div class="beer-fill" id="progressFillTotal"></div>
     <div class="beer-count-inside" id="beerCountTotal">0</div>
   </div>
-  <div class="mug-label">Total</div>
 </div>
 
 
 <!-- Geva column -->
 <div class="mug-column">
-  <button id="addBtnGeva">+🍺</button>
+  <div class="btn-container">
+    <button class="add-btn" id="addBtnGeva">+🍺</button>
+     <div class="popup-menu" id="popupAddGeva">
+      <div class="option" data-value="0.3">300 ml 🍻</div>
+      <div class="option" data-value="0.5">500 ml 🍻</div>
+      <div class="option" data-value="1">1 L 🍻</div>
+    </div>
+  </div>
+
   <div class="beer-mug">
     <div class="beer-fill" id="progressFillGeva"></div>
-    <div class="beer-count-inside" id="beerCountGeva">0</div>
+    <div class="beer-count-inside" id="beerCountGeva">0 L</div>
     <div class="beer-foam"></div>
   </div>
   <div class="mug-label">Geva</div>
-  <button id="subBtnGeva">-🍺</button>
+
+  <div class="btn-container">
+    <button class="sub-btn" id="subBtnGeva">-🍺</button>
+   <div class="popup-menu" id="popupSubGeva">
+      <div class="option" data-value="0.3">300 ml 🍻</div>
+      <div class="option" data-value="0.5">500 ml 🍻</div>
+      <div class="option" data-value="1">1 L 🍻</div>
+    </div>
+  </div>
+
 </div>
 
 
