@@ -202,15 +202,16 @@ button {
 
 #resetAllBtn {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 10px;
   padding: 4px 8px;       /* smaller padding */
   font-size: 0.4rem;      /* smaller text */
   border-radius: 4px;     /* slightly smaller corners */
-  background-color: #ffecc8;
+  background-color: #fff1d8;
   z-index: 20;
   width: 30px;
   width: 40px;
+  box-shadow: 0 2px 5px rgba(77, 0, 0, 0.2);
 }
 
 #totalImage {
