@@ -72,7 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 3.7, src: 'liters_images/liter_3.7.JPG' },
     { threshold: 6.7, src: 'liters_images/liter_6.7.JPG' },
     { threshold: 9, src: 'liters_images/liter_9.JPG' },
-    { threshold: 12, src: 'liters_images/liter_12.JPG' }
+    { threshold: 12, src: 'liters_images/liter_12.JPG' },
+    { threshold: 15, src: 'liters_images/liter_15.JPG' },
+    { threshold: 18, src: 'liters_images/liter_18.JPG' },
+    { threshold: 21, src: 'liters_images/liter_21.JPG' },
+    { threshold: 25, src: 'liters_images/liter_25.JPG' }
   ];
 
   // Update bars and image
